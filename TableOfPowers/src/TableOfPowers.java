@@ -35,7 +35,7 @@ public class TableOfPowers {
 			}
 			System.out.println(table);
 			System.out.print("Continue(y/n)?");
-			cont = sc.next();
+			cont = sc.next(); 
 		}
 	}
 
