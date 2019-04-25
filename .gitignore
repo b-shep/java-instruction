@@ -22,6 +22,7 @@ local.properties
 # Java annotation processor (APT)
 .factorypath
 # PDT-specific (PHP Development Tools)
+.
 .buildpath
 # sbteclipse plugin
 .target
@@ -33,15 +34,17 @@ local.properties
 .springBeans
 # Code Recommenders
 .recommenders/
-Servers/
 # Annotation Processing
 .apt_generated/
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
 .scala_dependencies
 .worksheet
-RemoteSystemsTempFiles/
 .class
 .classpath
 .settings
+.prefs
 .project
+.policy
+.access
+Servers/
