@@ -43,21 +43,3 @@ public class TableOfPowers {
 
 
 
-
-//			//build table
-//			String table = "";
-//			String headerRow = "Number		Squared		Cubed";
-//			String headerRow2 = "======		=======		======";
-//			table += headerRow + "\n";
-//			table += headerRow2 + "\n" +"\n";
-//			
-//			//create rows and append to table
-//			for (int row = 1; row <= userNumber; row++) {
-//				String rowDisp = row + "		";
-//				
-//				//calc values for squared and cubed columns
-//				int squared = row * row;
-//				int cubed = row * row * row;
-//				rowDisp += squared + "		" + cubed;
-//					
-//				table += rowDisp + "\n";
