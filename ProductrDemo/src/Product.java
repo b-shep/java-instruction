@@ -64,7 +64,7 @@ public class Product {
 	
 	
 	public static void aStaticMethod() {
-		System.out.println("an arbitrary static method");
+		System.out.println("an arbitrary static method");  
 	}
 	
 }

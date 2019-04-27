@@ -10,6 +10,7 @@ public class ProjectDemoApp {
 		System.out.println(p1.getCode() + " " + p1.getDescription() +  " " + p1.getPrice());
 		System.out.println(p1.toString());
 		
+		Product.aStaticMethod();
 	
 	}
 
