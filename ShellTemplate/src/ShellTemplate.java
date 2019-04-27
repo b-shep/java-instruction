@@ -11,7 +11,7 @@ public class ShellTemplate {
 		String choice = "y";
 		while (choice.equalsIgnoreCase("y")) {
 			double subtotal = 23.65;
-			BigDecimal decimalSubtotal = new BigDecimal(Double.toString(subtotal));
+			BigDecimal decimalSubtotal = new BigDecimal(Double.toString(subtotal)); 
 			System.out.println(decimalSubtotal);
 			
 			
