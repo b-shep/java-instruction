@@ -1,10 +1,8 @@
-import java.util.Scanner;
 
 public class GradeConverterApp {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Grade Converter!");
-		Scanner sc = new Scanner(System.in);
 		String cont = "y";
 		
 		while (cont.equalsIgnoreCase("y")) {
