@@ -23,8 +23,5 @@ public class Book extends Product {
 		return "Book [ author = " + author + super.toString() + " ]";
 
 	}
-	
-	
-	
 
 }

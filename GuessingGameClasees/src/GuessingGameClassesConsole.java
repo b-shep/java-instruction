@@ -18,9 +18,10 @@
 	    			isValid = true;
 	    		} else {
 	    			System.out.println("Please enter valid integer");
+	    			sc.nextLine();
 	    		}
 	    	}
-	    	sc.nextLine();
+	    	//sc.nextLine();
 	    	return guess;
 		}
 	    
@@ -45,8 +46,7 @@
 	    
 	    public static String getString(String prompt) {
 	        System.out.print(prompt);
-	        String s = sc.next();  // read user entry
-	        sc.nextLine();  // discard any other data entered on the line
+	        String s = sc.nextLine(); 
 	        return s;
 	    }
 	    

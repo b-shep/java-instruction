@@ -7,7 +7,6 @@ public class GuessingGuessClassesApp {
 		Game.welcomeMessage();
 		String choice = "y";
 		
-		
 		while (choice.equalsIgnoreCase("y")) {
 			int compGuess = playGame.getRandom(); 
 			playGame.setCompGuess(compGuess);
