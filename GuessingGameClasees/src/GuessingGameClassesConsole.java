@@ -58,7 +58,7 @@
 	        	s = getString(prompt);
 	        	if (s.equalsIgnoreCase(y) || s.equalsIgnoreCase(n)) {
 		        	isValid = true;
-	        	} else if (s.contentEquals("")) {
+	        	} else if (s.equalsIgnoreCase("")) {
 	        		System.out.println("Entry Required.");
 	        	} else {
 	        		System.out.println("Please Enter 'y' or 'n'");

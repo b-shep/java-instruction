@@ -11,6 +11,10 @@ public class ProjectDemoApp {
 		System.out.println(p1.toString());
 		
 		Product.aStaticMethod();
+		
+		//create a book
+		Book bensBook = new Book("java", "Murach's", 57.50, "Joel Murach");
+		System.out.println(bensBook);
 	
 	}
 

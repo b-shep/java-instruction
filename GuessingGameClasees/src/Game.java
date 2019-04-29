@@ -7,9 +7,13 @@ public class Game {
 
 	public Game() {
 		userGuess = 0;
-		compNum = 0;
+		compNum = getRandom();
 		numberOfGuesses = 0;
 		isNum = false;
+	}
+	
+	public Game(int userGuess) {
+		this.userGuess = userGuess;
 	}
 
 	public void setUserGuess(int userGuess) {
@@ -60,9 +64,19 @@ public class Game {
 		}
     	
     }
+    
+	public int getRandom() {
+		double random = 1 + Math.random() *100;
+		return (int) random;
+	}
+	
     public void reset () {
 		numberOfGuesses = 0;
 		isNum = false;
+    }
+    
+    public static void welcomeMessage() {
+		System.out.println("Welcome to the Guessing Game!");
     }
     
 }

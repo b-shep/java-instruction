@@ -2,16 +2,16 @@
 public class GuessingGuessClassesApp {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to the Guessing Game!");
+		
 		Game playGame = new Game();
+		Game.welcomeMessage();
 		String choice = "y";
 		
 		
 		while (choice.equalsIgnoreCase("y")) {
-			int compGuess = getRandom();
+			int compGuess = playGame.getRandom(); 
 			playGame.setCompGuess(compGuess);
 
-			
 			boolean isValid = false;	
 			while (!isValid) {
 				int userGuess = GuessingGameClassesConsole.getUserGuess("Enter Guess: ", 1, 100);
@@ -26,11 +26,6 @@ public class GuessingGuessClassesApp {
 			choice = GuessingGameClassesConsole.getString("Continue? (y/n)", "y", "n");
 		}
 
-	}
-	
-	public static int getRandom() {
-		double random = 1 + Math.random() *100;
-		return (int) random;
 	}
 }
 

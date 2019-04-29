@@ -18,7 +18,7 @@ public class TipCalculator {
 		while (choice.equalsIgnoreCase("y")) {
 			System.out.print("Cost of meal: ");
 			BigDecimal cost = sc.nextBigDecimal();
-			String amount = "Amount		";
+			
 			for (int i = 15; i <=25; i+=5) {
 				table += i + "%		";
 				BigDecimal iConvert = new BigDecimal(i);
