@@ -1,5 +1,5 @@
 
-public class Product {
+public class Product implements ProductReader{
 	
 //	instance variables
 	private String code;
@@ -65,6 +65,18 @@ public class Product {
 	
 	public static void aStaticMethod() {
 		System.out.println("an arbitrary static method");  
+	}
+
+	@Override
+	public Product get(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

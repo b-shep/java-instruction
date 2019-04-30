@@ -8,9 +8,9 @@ public class NumberCheckerApp {
 		while (choice.equals("y")) {
 			int userNumber = console.getInt("Enter Integer: ");
 			if (userNumber % 2 == 0) {
-				System.out.println("Your Number is Even!");
+				System.out.println("Your Number " + userNumber + " is Even!");
 			} else {
-				System.out.println("Your Number is Odd!");
+				System.out.println("Your Number " + userNumber + " is Odd!");
 			}
 			
 			choice = console.getString("Continue? (y/n)", "");
