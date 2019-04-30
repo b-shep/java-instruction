@@ -1,3 +1,6 @@
+package logic;
+
+import db.ProductReader;
 
 public class Product implements ProductReader{
 	

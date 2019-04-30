@@ -1,3 +1,7 @@
+package accounts;
+import interfaces.Balanceable;
+import interfaces.Depositable;
+import interfaces.Withdraw;
 
 public class Account implements Withdraw, Depositable, Balanceable {
 	

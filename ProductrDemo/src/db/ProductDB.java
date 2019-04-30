@@ -1,3 +1,5 @@
+package db;
+import logic.Product;
 
 public class ProductDB implements ProductReader {
 

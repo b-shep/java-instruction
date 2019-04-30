@@ -1,3 +1,6 @@
+package ui;
+import logic.Book;
+import logic.Product;
 
 public class ProjectDemoApp {
 

@@ -1,3 +1,6 @@
+package db;
+
+import logic.Product;
 
 public interface ProductReader {
 	//method stubs
