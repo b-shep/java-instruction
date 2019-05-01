@@ -1,20 +1,18 @@
 package accounts;
 import interfaces.Balanceable;
 import interfaces.Depositable;
-import interfaces.Withdraw;
+import interfaces.Withdrawable;
 
-public class Account implements Withdraw, Depositable, Balanceable {
+public class Account implements Withdrawable, Depositable, Balanceable {
 	
 	protected double balance;
 	
-	public Account() {
-		balance = 0;
-	}
-	
+
 	public Account(double balance) {
+		super();
 		this.balance = balance;
 	}
-
+	
 	@Override
 	public double getBalance() {
 		return balance;

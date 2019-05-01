@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface Withdraw {
+public interface Withdrawable {
 	void withdraw(double amount);
 }

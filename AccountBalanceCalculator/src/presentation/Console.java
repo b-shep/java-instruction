@@ -1,4 +1,5 @@
 package presentation;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 import accounts.CheckingAccount;
@@ -101,14 +102,13 @@ public class Console {
         return d;
     }
 
-    public static void displayResults(SavingsAccount savings, CheckingAccount checking) {
-    	System.out.println("");
+    public static void displayFees(CheckingAccount c, SavingsAccount s) {
+    	NumberFormat currency = NumberFormat.getCurrencyInstance();
+    	System.out.println();
     	System.out.println("Monthly Payments and Fees:");
-    	System.out.println("Checking Fee: " + checking.getMonthlyFee());
-    	System.out.println("Savings Interest Payment: " + savings.getPayOut() + "\n");
-    	System.out.println("");
-    	System.out.println("Final Balances:");
-    	System.out.println("Checking: " + checking.getBalance());
-    	System.out.println("Savings:  " + savings.getBalance());
+    	System.out.println("Checking Fee: " + currency.format(c.getMonthlyFee()));
+    	System.out.println("Savings Interest Payment: " + currency.format(s.getPayOut()) + "\n");
+    	System.out.println();
+
     }
 }

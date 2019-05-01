@@ -3,13 +3,13 @@ package accounts;
 public class CheckingAccount extends Account{
 	private double monthlyFee;
 	
-	public CheckingAccount() {
-		balance = 1000;
-		monthlyFee = 1;
-		withdraw(monthlyFee);
-	} 
-	public CheckingAccount(double monthlyFee) {
+	
+	public CheckingAccount(double balance, double monthlyFee) {
+		super(balance);
+		this.balance = balance;
 		this.monthlyFee = monthlyFee;
+	}
+	public void subtractMonthlyFee() {
 		withdraw(monthlyFee);
 	}
 	public double getMonthlyFee() {
