@@ -14,33 +14,38 @@ public class AccountBalanceApp {
 		String choice = "y";
 		
 		while (choice.equalsIgnoreCase("y")) {
-			String withOrDep = Console.getString("Withdraw or Deposit? (w/d) ", "w", "d");
+			
 			String checkOrSav = Console.getString("Checking or Savings? (c/s) ", "c", "s");
-			
- 
 			if (checkOrSav.equalsIgnoreCase("c")) {
-				if (withOrDep.equalsIgnoreCase("w")){
-					Double amount = Console.getDouble("Enter Checking Withdraw Amount: ", 0, checking.getBalance());
-					checking.withdraw(amount);
-				} else if (withOrDep.equalsIgnoreCase("d")) {
-					Double amount = Console.getDouble("Enter Checking Deposit Amount: ");
-					checking.deposit(amount);
-				}
-		
+				withOrDep(checking);
 			} else if (checkOrSav.equalsIgnoreCase("s")) {
-				if (withOrDep.equalsIgnoreCase("w")){
-					Double amount = Console.getDouble("Enter Savings Withdrawl Amount: ", 0, savings.getBalance());
-					savings.withdraw(amount);
-				} else if (withOrDep.equalsIgnoreCase("d")) {
-					Double amount = Console.getDouble("Enter Savings Deposit Amount: ");
-					savings.deposit(amount);
-				}
+				withOrDep(savings);
 			}
-			
+
 			choice = Console.getString("\nContinue? (y/n) ", "y", "n");	
 		}
 		System.out.println();
 		Console.displayResults(savings, checking);
 	}
-
+	
+		
+	
+	public static void withOrDep(Account a) {
+		String withOrDep = Console.getString("Withdraw or Deposit? (w/d) ", "w", "d");
+		if (withOrDep.equalsIgnoreCase("w")) {
+			withdrawAction(a);
+		} else if (withOrDep.equalsIgnoreCase("d")) {
+			depositAction(a);
+		}
+	}
+	
+	public static void withdrawAction(Account a) {
+		Double amount = Console.getDouble("Enter Savings Withdrawl Amount: ", 0, a.getBalance());
+		a.withdraw(amount);
+	}
+	
+	public static void depositAction(Account a) {
+		Double amount = Console.getDouble("Enter Savings Deposit Amount: ");
+		a.deposit(amount);
+	}
 }
