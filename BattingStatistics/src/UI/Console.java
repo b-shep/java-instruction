@@ -1,15 +1,13 @@
-package classes;
+package UI;
+
 
 import java.util.Scanner;
 
-import interfaces.UserIO;
 
-public class ConsoleIO implements UserIO{
+public class Console{
 	Scanner sc = new Scanner(System.in);
-
 	
-
-	@Override
+	
 	public int getInt(String prompt) {
         int i = 0;
         boolean isValid = false;
@@ -26,7 +24,6 @@ public class ConsoleIO implements UserIO{
         return i;
 	}	
 
-	@Override
 	public int getInt(String prompt, int min, int max) {
 		int i = 0;
         boolean isValid = false;
@@ -45,7 +42,6 @@ public class ConsoleIO implements UserIO{
         return i;
 	}
 
-	@Override
 	public double getDouble(String prompt) {
         double d = 0;
         boolean isValid = false;
@@ -61,7 +57,6 @@ public class ConsoleIO implements UserIO{
         }
         return d;	}
 
-	@Override
 	public double getDouble(String prompt, double min, double max) {
         double d = 0;
         boolean isValid = false;
@@ -80,7 +75,6 @@ public class ConsoleIO implements UserIO{
         return d;
 	}
 
-	@Override
 	public String getString(String prompt) {
 		String s = "";
 		boolean isValid = false;
@@ -97,7 +91,6 @@ public class ConsoleIO implements UserIO{
         return s;
 	}
 
-	@Override
 	public String getString(String prompt, String s1, String s2) {
         String s = "";
         boolean isValid = false;
@@ -115,21 +108,7 @@ public class ConsoleIO implements UserIO{
         return s;
 	}
 
-	@Override
-	public void print(String s) {
-		System.out.print(s);
-	}
 
-	@Override
-	public void println() {
-		System.out.println();
-		
-	}
-
-	@Override
-	public void println(String s) {
-		System.out.println(s);
-	}
 	
 	
 

@@ -56,7 +56,7 @@ public class AccountBalanceApp {
 	}
 	
 	public static void depositAction(Account a) {
-		Double amount = Console.getDouble("Enter Deposit Amount: ");
+		Double amount = Console.getDouble("Enter Deposit Amount: "); 
 		a.deposit(amount);
 	}
 	
