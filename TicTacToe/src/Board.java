@@ -47,6 +47,7 @@ public class Board {
 		if(checkRow(player) ||
 		checkColumn(player) ||
 		checkSlash(player)){
+			System.out.println("\n" + player + " Wins!!!");
 			return "y";
 			
 		} else {
@@ -66,7 +67,6 @@ public class Board {
 				}
 			}
 			if(sum == 3) {
-				System.out.println(player + " Wins!!!");
 				return true;
 				
 			}
