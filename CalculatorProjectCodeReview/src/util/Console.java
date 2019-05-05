@@ -102,15 +102,17 @@ public class Console{
 
         while(!isValid) {
         	s = getString(prompt);
-        	String check = "true";
+        	String check = "false";
         	for (int i = 0; i < values.length; i++) {
         		if (s.equals(values[i])) {
+        			check = "true";
         			isValid = true;
         			break;
         		} 
         	}
         	if (check.equals("false")){
-        		System.out.println("Error! Must enter operator. Try again. ");
+        		System.out.println("Error! Please enter valid operator.");
+        		System.out.println("Available Operators: '+', '-', '*', '/'\n");
         	}
         }
         return s;

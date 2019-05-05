@@ -1,5 +1,6 @@
 package logic;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class Calculator {
@@ -13,126 +14,90 @@ public class Calculator {
 	
 	
 	//calculate multiplication and division before addition and subtraction;
-	public static String calculate(ArrayList<String>numberList){
-		ArrayList<String> shortList = new ArrayList<>(); //array of */ expressions to be calculated before +-
-		ArrayList<String> finalList = new ArrayList<>(); //array of +- expressions including collapsed */ expressions
-		String finalNumber = "to be determined";
+	public String calculate(ArrayList<String>numberList){
+		ArrayList<String> shortList = new ArrayList<>(); //array of */ expressions to be evaluated at each +- iteration to be added to finalList
+		ArrayList<String> finalList = new ArrayList<>(); //array of +- expressions including evaluated */ expressions
+		String finalNumber = ""; //placeholder for results of performCalculation()
+		
+		//iterate over each operator to build arrays based on order of operations
 		for (int i = 1; i < numberList.size(); i += 2) {
-//check
-			System.out.println("i in calculatio forloop is " + i);
 			if (checkOperator(numberList.get(i)).equals("+or-")) {
 				if (shortList.size() > 0) {
-//check					
-					System.out.println("shortList at +- add calculation > 0 = " + shortList + " for " + i );
-					finalList.add(performCalculation(shortList, finalNumber));
+					//will only occur if operator before i is *or/
+					shortList.add(numberList.get(i-1));
+					//i-1 must be calculated to be included in +- expression
+					numberList.set(i-1, performCalculation(shortList, finalNumber));
 					shortList.clear();
 				}
-				System.out.println("+- called at" + i);
-
+				finalList.add(numberList.get(i-1));
 				finalList.add(numberList.get(i));
-				//add next number to final list only if it is not part of a */ expression
-				if (i > numberList.size() - 2 || checkOperator(numberList.get(i+2)).equals("+or-")) {
-					finalList.add(numberList.get(i-1));
-					finalList.add(numberList.get(i+1));
-				}
-				System.out.println("finalList after +- is " + finalList);
-			} else if (checkOperator(numberList.get(i)).equals("*or/")){
-				shortList.clear();
-//check				
-				System.out.println("*or/ called");
-
+				
+			} else if (checkOperator(numberList.get(i)).equals("*or/")) {
 				shortList.add(numberList.get(i-1));
 				shortList.add(numberList.get(i));
-				shortList.add(numberList.get(i+1));
-//check
-				System.out.println("shortList of */ is " + shortList);
 			}
 			
-		}
-		if (shortList.size() > 1) {
-			finalList.add(performCalculation(shortList, finalNumber));
-		}
-//check
-		System.out.println("shortList before finalList calculated ");
-		System.out.println("final list before consolidated calculation: " + finalList);
-		
-		String consolidated = performCalculation(finalList, finalNumber);
-		return consolidated;
-	}
-	
-	
-	//take an array with either all +- or */ calculations and recursively collapse it into one number
-	public static String performCalculation(ArrayList<String>shortList, String finalNumber) {
-
-		if(shortList.size() > 1) {
-			System.out.println("recursion called: shortList is  " + shortList);
-			for (int i = 1; i < 3; i += 2) {
-				System.out.println("shortlist called in forloop performCalc" + shortList);
-				if (shortList.get(i).equals(("+"))) {
-					System.out.println("addition selected");
-					//ArrayList<String> newList = new ArrayList<>();  
-					//newList = collapse(shortList, "add");
-					BigDecimal number = new BigDecimal(shortList.get(i-1));
-					BigDecimal nextNumber = new BigDecimal(shortList.get(i+1));
-					BigDecimal newNumber = number.add(nextNumber);
-					String newNumberString = newNumber.toString();
-					shortList.set(2, newNumberString);
-					shortList.remove(0);
-					shortList.remove(0);
-					finalNumber = shortList.get(0);
-					performCalculation(shortList, finalNumber);
-					
-				} else if(shortList.get(i).equals(("-"))){
-					System.out.println("subtraction selected");
-					
-					BigDecimal number = new BigDecimal(shortList.get(i-1));
-					BigDecimal nextNumber = new BigDecimal(shortList.get(i+1));
-					BigDecimal newNumber = number.subtract(nextNumber);
-					String newNumberString = newNumber.toString();
-					shortList.set(2, newNumberString);
-					shortList.remove(0);
-					shortList.remove(0);
-					System.out.println("abridged shortlist is " + shortList);
-					finalNumber = shortList.get(0);
-					performCalculation(shortList, finalNumber);
-				} else if(shortList.get(i).equals(("*"))) {
-					System.out.println("multiplication selected");
-
-					BigDecimal number = new BigDecimal(shortList.get(i-1));
-					BigDecimal nextNumber = new BigDecimal(shortList.get(i+1));
-					BigDecimal newNumber = number.multiply(nextNumber);
-					String newNumberString = newNumber.toString();
-//check					
-					shortList.set(2, newNumberString);
-//check				
-					shortList.remove(0);
-					shortList.remove(0);
-//check
-					System.out.println("abridged shortlist is " + shortList);
-					finalNumber = shortList.get(0);
-					performCalculation(shortList, finalNumber);
-					
-				} else {
-					System.out.println("division selected");
-
-
-					BigDecimal number = new BigDecimal(shortList.get(i-1));
-					BigDecimal nextNumber = new BigDecimal(shortList.get(i+1));
-					BigDecimal newNumber = number.divide(nextNumber);
-					String newNumberString = newNumber.toString();
-					shortList.set(2, newNumberString);
-					shortList.remove(0);
-					shortList.remove(0);
-					System.out.println("abridged shortlist is " + shortList);
-					finalNumber = shortList.get(0);
-					performCalculation(shortList, finalNumber);
+			//determine what to with last number in numberList
+			if (i > numberList.size() - 3) {
+				if (checkOperator(numberList.get(i)).equals("+or-")) {
+					finalList.add(numberList.get(i+1));
+				} else if (checkOperator(numberList.get(i)).equals("*or/")) {
+					shortList.add(numberList.get(i+1));
 				}
 			}
-		} 
-		System.out.println("final number returned for performCalc is " + finalNumber);
-		return finalNumber;
+		}
+		
+		//evaluate shortList if final operator in numList was *or/
+		if (shortList.size() > 0) {
+			finalList.add(performCalculation(shortList, finalNumber));
+		}
+		return performCalculation(finalList, finalNumber);
 	}
 		
+	
+	//take an array with either all +- or */ calculations and recursively evaluate it to one number
+	public static String performCalculation(ArrayList<String>list, String finalNumber) {
+		if(list.size() > 1) {
+			//create array for first expression in list
+			ArrayList<String> triptych = new ArrayList<>();
+			for (int i = 0; i < 3; i++) {
+				triptych.add(list.get(i));
+			}
+			//replace first 3 places of list with their calculated value
+			list.set(2, evaluateTriptych(triptych));
+			list.remove(0);
+			list.remove(0);
+			performCalculation(list, finalNumber);		
+		}
+		
+		finalNumber = list.get(0);
+		return finalNumber;
+	}
+	
+	
+	//evaluate expression consisting of number operator number
+	public static String evaluateTriptych(ArrayList<String> triptych) {
+		BigDecimal number = new BigDecimal(triptych.get(0));
+		BigDecimal nextNumber = new BigDecimal(triptych.get(2));
+		BigDecimal newNumber = new BigDecimal("1"); 
+		
+		if (triptych.get(1).equals("+")) {
+			newNumber = number.add(nextNumber);
+		} else if (triptych.get(1).equals("-")) {
+			newNumber = number.subtract(nextNumber);
+		} else if (triptych.get(1).equals("*")) {
+			newNumber = number.multiply(nextNumber);
+		} else if (triptych.get(1).equals("/")) {
+			newNumber = number.divide(nextNumber, 3, RoundingMode.HALF_UP);
+		} else if (triptych.get(1).contentEquals("%")) {
+			newNumber = number.remainder(nextNumber);
+		}
+
+		String newNumberString = newNumber.toString();
+		return newNumberString;
+		
+	}
+	
 
 	//determine +- or */
 	public static String checkOperator(String operator) {
@@ -143,15 +108,10 @@ public class Calculator {
 		}
 	}
 	
+	
 	public void reset() {
 		numberList.clear();
 	}
-
-
-
-
-
-
 
 }
 
