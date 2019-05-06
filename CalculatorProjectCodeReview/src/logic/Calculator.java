@@ -55,7 +55,7 @@ public class Calculator {
 	}
 		
 	
-	//take an array with either all +- or */ calculations and recursively evaluate it to one number
+	//take an array with either all +- or */ calculations and recursively evaluate it until one number remains
 	public static String performCalculation(ArrayList<String>list, String finalNumber) {
 		if(list.size() > 1) {
 			//create array for first expression in list
