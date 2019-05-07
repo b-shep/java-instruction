@@ -1,4 +1,8 @@
+package ui;
 import java.util.ArrayList;
+
+import Console;
+import CountryListIO;
 
 public class CountryListManagerApp {
 
@@ -12,11 +16,14 @@ public class CountryListManagerApp {
 			CountryListIO edit = new CountryListIO();
 			String choice = Console.getString("Enter menu number: ", "1", "2", "3");
 			if(choice.equals("1")) {
-				System.out.println(edit.getCountries());
+				ArrayList<String> list = edit.getCountries();
+				for (String s: list) {
+					System.out.println(s);
+				}
 			} else if(choice.equals("2")) {
-				ArrayList<String> newCountry = new ArrayList<>();
-				newCountry.add(Console.getString("Enter Country: "));
-				edit.saveCountries(newCountry);
+				String newCountry = Console.getString("Enter Country: ");
+				edit.add(newCountry);
+				edit.saveCountries();
 				
 			} else if(choice.equals("3")) {
 				cont = "no";

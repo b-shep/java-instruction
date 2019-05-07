@@ -12,26 +12,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class CountryListIO {
-	private ArrayList<String> countries;
-	private Path countriesPath;
-	private File countriesFile;
-	private String FIELD_SEP;
+	private ArrayList<String> countries = null;
+	private Path countriesPath = null;
+	private File countriesFile = null;
+	private String SEP = "\n";
 	
 	
 	CountryListIO(){
-
 		countriesPath = Paths.get("countries.txt");
-		if(Files.notExists(countriesPath)) {
-			try {
-				Files.createFile(countriesPath);
-			} catch (IOException e) {
-				System.out.println("failed to create file");
-				e.printStackTrace();
-			}
-		}
 		countriesFile = countriesPath.toFile();
-		countries = new ArrayList<>();
-		FIELD_SEP = "\t";
+		countries = getCountries();
+		
 	}
 
 	
@@ -41,6 +32,7 @@ public class CountryListIO {
 			return countries;
 		}
 		
+		countries = new ArrayList<>();
 		try (BufferedReader in = 	new BufferedReader(
 									new FileReader(countriesFile))){
 			String line = in.readLine();
@@ -61,14 +53,14 @@ public class CountryListIO {
 	}
 	
 	
-	public boolean saveCountries(ArrayList<String> countries) {
+	public boolean saveCountries() {
 		
 		try (PrintWriter out = 	new PrintWriter(
 								new BufferedWriter(
 								new FileWriter(countriesFile)))) {
 		
 			for (String country: countries) {
-				out.print(country + FIELD_SEP);
+				out.print(country + SEP);
 			}
 			return true;
 		} catch (IOException e) {
@@ -76,6 +68,12 @@ public class CountryListIO {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+
+	public void add(String string) {
+		countries.add(string);
+		
 	}
 	
 }
