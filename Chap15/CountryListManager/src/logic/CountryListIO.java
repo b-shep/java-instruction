@@ -1,3 +1,4 @@
+package logic;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,7 +19,7 @@ public class CountryListIO {
 	private String SEP = "\n";
 	
 	
-	CountryListIO(){
+	public CountryListIO(){
 		countriesPath = Paths.get("countries.txt");
 		countriesFile = countriesPath.toFile();
 		countries = getCountries();

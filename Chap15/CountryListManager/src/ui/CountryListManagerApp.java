@@ -1,8 +1,8 @@
 package ui;
 import java.util.ArrayList;
 
-import Console;
-import CountryListIO;
+import logic.CountryListIO;
+import util.Console;
 
 public class CountryListManagerApp {
 

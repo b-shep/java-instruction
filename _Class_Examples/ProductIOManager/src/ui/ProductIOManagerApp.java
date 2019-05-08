@@ -6,17 +6,18 @@ import java.util.List;
 
 import business.Product;
 import db.DAO;
-import db.ProductTextFile;
+import db.ProductDB;
+//import db.ProductTextFile;
 import util.Console;
 import util.StringUtils;
 
 public class ProductIOManagerApp {
 	
 	
-	private static DAO<Product> productDAO = new ProductTextFile();
+	private static DAO<Product> productDAO = new ProductDB();
 	
 	public static void main(String[] args) {
-		System.out.println("Welcome to Product Manager: Text Edition");
+		System.out.println("Welcome to Product Manager");
 		
 		displayMenu();
 		String action = "";
