@@ -19,6 +19,12 @@ public class Stuffy {
 		this.size = size;
 		this.limbs = limbs;
 	}
+	public Stuffy(String type, String color, String size, int limbs) {
+		this.type = type;
+		this.color = color;
+		this.size = size;
+		this.limbs = limbs;
+	}
 
 	public int getId() {
 		return id;

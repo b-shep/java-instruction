@@ -1,18 +1,21 @@
 package ui;
 
-import java.util.ArrayList;
 import java.util.List;
-import database.DAO;
-import business.Stuffy;
-import database.StuffyDB;
+
+import db.DAO;
+import db.User_DB;
 import util.Console;
 import util.StringUtils;
 
-public class StuffyDispenserApp {
+
+
+public class PRSapp {
+
+
+
+private static DAO<Stuffy> stuffyDAO = new StuffyDB();
 	
-	private static DAO<Stuffy> stuffyDAO = new StuffyDB();
-		
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		System.out.println("Welcome to Product Manager");
 		
 		displayMenu();
@@ -52,10 +55,10 @@ public class StuffyDispenserApp {
 				+ "exit		-exit the app\n");
 	}
 	
-	private static void displayAllStuffies() {
-		System.out.println("STUFFY LIST");
+	private static void displayAll() {
+		System.out.println("OBJECT LIST");
 		System.out.println("=====================");
-		List<Stuffy> stuffies = stuffyDAO.getAll();
+		List<> stuffies = stuffyDAO.getAll();
 		StringBuilder sb = new StringBuilder();
 		for (Stuffy s: stuffies) {
 			sb.append(StringUtils.padWithSpaces(Integer.toString(s.getId()), 10));
@@ -64,12 +67,12 @@ public class StuffyDispenserApp {
 			sb.append(StringUtils.padWithSpaces(s.getSize(), 10));
 			sb.append(s.getLimbs());
 			sb.append("\n");
-
+	
 		}
 		System.out.println(sb.toString());
 	}
 	
-
+	
 	private static void addStuffy() {
 		String type = Console.getString("Enter Type: ");
 		String color = Console.getString("Enter Color: ");
@@ -99,9 +102,11 @@ public class StuffyDispenserApp {
 				System.out.println("Delete Succes!");
 			} else {
 				System.out.println("Error deleting product!");
+					}
+				}
+				
 			}
-		}
-		
-	}
 
 }
+
+
