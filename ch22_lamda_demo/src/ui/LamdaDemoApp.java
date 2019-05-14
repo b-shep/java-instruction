@@ -6,7 +6,7 @@ import java.util.List;
 import logic.Contact;
 import logic.TestContact;
 
-public class ContactsApp {
+public class LamdaDemoApp {
 
 	public static void main(String[] args) {
 		

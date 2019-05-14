@@ -2,14 +2,14 @@ package logic;
 
 public class Contact {
 	private String name;
-	private String phoneNumber;
 	private String email;
+	private String phoneNumber;
 
 	public Contact() {
 		super();
 	}
 
-	public Contact(String name, String phoneNumber, String email) {
+	public Contact(String name, String email, String phoneNumber) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;

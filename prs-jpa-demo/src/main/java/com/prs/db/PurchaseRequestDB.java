@@ -8,18 +8,16 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.prs.logic.POJO_values;
-import com.prs.logic.User;
+import com.prs.logic.PurchaseRequest;
 import com.prs.logic.Vendor;
 
-public class VendorDB implements POJO_values<Vendor>{
-	
-	public List<Vendor> getAll(){
-		List<Vendor> vendors = null;
+public class PurchaseRequestDB {
+	public List<PurchaseRequest> getAll(){
+		List<PurchaseRequest> vendors = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		
 		try {
-			Query q = em.createQuery("Select v from Vendor v");
+			Query q = em.createQuery("Select pr from PurchaseRequest pr");
 			vendors = q.getResultList();
 		} finally {
 			em.close();
@@ -27,15 +25,15 @@ public class VendorDB implements POJO_values<Vendor>{
 		return vendors;
 	}
 	
-	public static Vendor get(int id) {
+	public static PurchaseRequest get(int id) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String queryString = "SELECT v FROM Vendor v " +
-							 "WHERE v.id = :id";
-		TypedQuery<Vendor> q = em.createQuery(queryString, Vendor.class);
+		String queryString = "SELECT pr FROM PurchaseRequest pr " +
+							 "WHERE pr.id = :id";
+		TypedQuery<PurchaseRequest> q = em.createQuery(queryString, PurchaseRequest.class);
 		q.setParameter("id", id);
-		Vendor vendor = null;
+		PurchaseRequest purchaseRequest = null;
 		try {
-			vendor = q.getSingleResult();
+			purchaseRequest = q.getSingleResult();
 		}
 		catch (NoResultException e) {
 			System.err.println(e);
@@ -43,17 +41,17 @@ public class VendorDB implements POJO_values<Vendor>{
 		finally {
 			em.close();
 		}
-		return vendor;
+		return purchaseRequest;
 		
 	}
 	
-	public boolean add(Vendor v) {
+	public boolean add(PurchaseRequest pr) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		
 		try {
 			trans.begin();
-			em.persist(v);
+			em.persist(pr);
 			trans.commit();
 			return true;
 		} catch (Exception ex) {
@@ -65,13 +63,13 @@ public class VendorDB implements POJO_values<Vendor>{
 		}
 	}
 	
-	public static boolean delete(Vendor v) {
+	public static boolean delete(PurchaseRequest pr) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		
 		try {
 			trans.begin();
-			em.remove(em.merge(v));
+			em.remove(em.merge(pr));
 			trans.commit();
 			return true;
 		} catch (Exception ex) {
@@ -99,6 +97,6 @@ public class VendorDB implements POJO_values<Vendor>{
 		} finally {
 			em.close();
 		}
-	}
+	} 
 
 }

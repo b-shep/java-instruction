@@ -1,5 +1,8 @@
 package com.prs.logic;
 
-public interface POJO_values {
+import java.util.List;
+
+public interface POJO_values<T> {
+	List <T> getAll();
 
 }

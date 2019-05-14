@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.prs.db.ProductDB;
 import com.prs.db.UserDB;
 import com.prs.db.VendorDB;
+import com.prs.logic.POJO_values;
 import com.prs.logic.User;
 import com.prs.logic.Vendor;
 import com.prs.util.Console;;
@@ -19,8 +20,9 @@ public class PrsJpaDemoApplication {
 		SpringApplication.run(PrsJpaDemoApplication.class, args);
 		
 		System.out.println("Hello");
+		VendorDB v = new VendorDB();
 		
-		System.out.println(VendorDB.getAll());
+		displayAll(v);
 		
 //		displayMenu();
 //		String action = "";
@@ -79,15 +81,9 @@ public class PrsJpaDemoApplication {
 				+ "exit		-exit the app\n");
 	}
 	
-	private static void displayAll() {
-		List<User> users = UserDB.getAll();
-		if (users != null) {
-			for(User u: users) {
-				System.out.println(u);
-			}
-		} else {
-			System.out.println("users null");
-		}
+	private static void displayAll(POJO_values t) {
+		List<User> list = t.getAll();
+		System.out.println(list.toString());
 	}
 	
 	private static void delete() {
