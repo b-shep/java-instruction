@@ -13,16 +13,16 @@ import com.prs.logic.Vendor;
 
 public class PurchaseRequestDB {
 	public List<PurchaseRequest> getAll(){
-		List<PurchaseRequest> vendors = null;
+		List<PurchaseRequest> purchaseRequests = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		
 		try {
 			Query q = em.createQuery("Select pr from PurchaseRequest pr");
-			vendors = q.getResultList();
+			purchaseRequests = q.getResultList();
 		} finally {
 			em.close();
 		}
-		return vendors;
+		return purchaseRequests;
 	}
 	
 	public static PurchaseRequest get(int id) {
@@ -81,13 +81,13 @@ public class PurchaseRequestDB {
 		}
 	}
 	
-	public boolean update(Vendor v) {
+	public boolean update(PurchaseRequest pr) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		
 		try {
 			trans.begin();
-			em.merge(v);
+			em.merge(pr);
 			trans.commit();
 			return true;
 		} catch (Exception ex) {

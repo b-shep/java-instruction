@@ -19,12 +19,13 @@ public abstract class Animal {
 	}
 	
 	public String getNameAndType() {
-		return name + " the " + this.getClass();
+		return name + " the " + this.toString();
 	}
 	
 	public abstract void speak();
 	
 	protected void speak (Consumer<Animal> consumer) {
+			consumer.accept(this);
 		
 	}
 	

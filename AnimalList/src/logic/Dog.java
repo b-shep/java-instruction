@@ -13,6 +13,11 @@ public class Dog extends Animal{
 		speak(d  -> System.out.println(d.getNameAndType() + " says 'Woof'!"));
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Dog";
+	}
 	
 	
 	

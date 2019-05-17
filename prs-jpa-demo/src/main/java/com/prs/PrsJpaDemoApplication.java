@@ -1,6 +1,7 @@
 package com.prs;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +22,11 @@ public class PrsJpaDemoApplication {
 		
 		System.out.println("Hello");
 		VendorDB v = new VendorDB();
+		UserDB u = new UserDB();
 		
-		displayAll(v);
+		
+		
+		displayUsers(u);
 		
 //		displayMenu();
 //		String action = "";
@@ -81,9 +85,14 @@ public class PrsJpaDemoApplication {
 				+ "exit		-exit the app\n");
 	}
 	
-	private static void displayAll(POJO_values t) {
-		List<User> list = t.getAll();
-		System.out.println(list.toString());
+	private static void displayAll(Consumer <POJO_values> values) {
+	}
+	
+	private static void displayUsers(UserDB userDB) {
+		List<User> users = userDB.getAll();
+		for (User u: users) {
+			System.out.println(u.toString());
+		}
 	}
 	
 	private static void delete() {

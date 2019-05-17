@@ -24,7 +24,6 @@ public class AnimalListApp {
 			String name = Console.getString("Enter name: ");
 			if (selectAnimal == 1) {
 				Animal dog = new Dog(name);
-				System.out.println("dog name is " + dog.getName());
 				animals.add(dog);
 			} else if(selectAnimal == 2) {
 				Animal cat = new Cat(name);
