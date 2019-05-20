@@ -8,14 +8,16 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.prs.logic.POJO_values;
 import com.prs.logic.User;
 import com.prs.logic.Vendor;
 
-public class VendorDB implements POJO_values<Vendor>{
+public class VendorDB extends Database<Vendor>{
 	
+	List<Vendor> vendors = null;
+	
+	@Override
 	public List<Vendor> getAll(){
-		List<Vendor> vendors = null;
+		
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		
 		try {
@@ -100,5 +102,18 @@ public class VendorDB implements POJO_values<Vendor>{
 			em.close();
 		}
 	}
+
+	@Override
+	public String toString() {
+		String vendorString = "";
+		for (Vendor v: vendors) {
+			vendorString += v.toString();
+		}
+		return vendorString;
+		
+		
+	}
+	
+	
 
 }

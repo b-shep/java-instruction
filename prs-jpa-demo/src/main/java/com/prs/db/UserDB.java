@@ -10,13 +10,14 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.prs.logic.User;
+import com.prs.logic.Vendor;
 
-public class UserDB {
+public class UserDB extends Database<User> {
+
+	List<User> users = null;
 	
-	public static List<User> getAll(){
-		List<User> users = null;
+	public List<User> getAll(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		
 		try {
 			Query q = em.createQuery("Select u from User u");
 			users = q.getResultList();
@@ -98,5 +99,14 @@ public class UserDB {
 		} finally {
 			em.close();
 		}
+	}
+	
+	@Override
+	public String toString() {
+		String userString = "";
+		for (User u: users) {
+			userString += u.toString();
+		}
+		return userString;
 	}
 }

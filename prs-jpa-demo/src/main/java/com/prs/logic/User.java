@@ -23,14 +23,26 @@ public class User {
 		
 	}
 	
-	public User(int id, String userName, String password, String firstName, String lastName, String email,
+	public User(int id, String userName, String password, String firstName, String lastName,  String phoneNumber, String email,
 			boolean isReviewer, boolean isAdmin) {
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.isReviewer = isReviewer;
+		this.isAdmin = isAdmin;
+	}
+	
+	public User(String userName, String password, String firstName, String lastName, String phoneNumber, String email, boolean isReviewer, boolean isAdmin) {
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
 		this.isReviewer = isReviewer;
 		this.isAdmin = isAdmin;
 	}
@@ -85,6 +97,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
+	
 	public String getEmail() {
 		return email;
 	}
@@ -111,7 +124,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return  userName + ", id=" + id  + ", password=" + password + ", firstName=" + firstName
+		return  "\n" + userName + ", id=" + id  + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", reviewer="
 				+ isReviewer + ", admin=" + isAdmin;
 	}

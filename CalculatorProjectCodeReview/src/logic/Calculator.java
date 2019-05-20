@@ -2,6 +2,7 @@ package logic;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
 	
@@ -11,10 +12,13 @@ public class Calculator {
 		super();
 		this.numberList = numberList;
 	}
+	public Calculator() {
+		numberList = new ArrayList<String>();
+	}
 	
 	
 	//calculate multiplication and division before addition and subtraction;
-	public String calculate(ArrayList<String>numberList){
+	public String calculate(List<String>numberList){
 		ArrayList<String> shortList = new ArrayList<>(); //array of */ expressions to be evaluated at each +- iteration to be added to finalList
 		ArrayList<String> finalList = new ArrayList<>(); //array of +- expressions including evaluated */ expressions
 		String finalNumber = ""; //placeholder for results of performCalculation()
@@ -56,7 +60,7 @@ public class Calculator {
 		
 	
 	//take an array with either all +- or */ calculations and recursively evaluate it until one number remains
-	public static String performCalculation(ArrayList<String>list, String finalNumber) {
+	public static String performCalculation(List<String>list, String finalNumber) {
 		if(list.size() > 1) {
 			//create array for first expression in list
 			ArrayList<String> triptych = new ArrayList<>();
@@ -76,7 +80,7 @@ public class Calculator {
 	
 	
 	//evaluate expression consisting of number operator number
-	public static String evaluateTriptych(ArrayList<String> triptych) {
+	public static String evaluateTriptych(List<String> triptych) {
 		BigDecimal number = new BigDecimal(triptych.get(0));
 		BigDecimal nextNumber = new BigDecimal(triptych.get(2));
 		BigDecimal newNumber = new BigDecimal("1"); 

@@ -110,8 +110,8 @@ public class Vendor {
 	}
 	
 	public String toString() {
-		return "\n[" + name + ", id=" + id + ", code=" + code +  ", address=" + address
-				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
+		return "\nVendor: " + name + ", id=" + id + ", code=" + code +  ", address=" + address
+				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email;
 	}
 	
 	

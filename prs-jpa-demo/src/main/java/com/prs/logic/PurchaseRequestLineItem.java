@@ -1,22 +1,44 @@
 package com.prs.logic;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class PurchaseRequestLineItem {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int purchaseRequestId;
-	private int productId;
+	@ManyToOne
+	@JoinColumn(name = "PurchaseRequestID")
+	private PurchaseRequest purchaseRequest;
+	@ManyToOne
+	@JoinColumn(name = "ProductID")
+	private Product product;
 	private int quantity;
+	
+	public PurchaseRequestLineItem(int id, PurchaseRequest purchaseRequest, Product product, int quantity) {
+		super();
+		this.id = id;
+		this.purchaseRequest = purchaseRequest;
+		this.product = product;
+		this.quantity = quantity;
+	}
+	
+	public PurchaseRequestLineItem(PurchaseRequest purchaseRequest, Product product, int quantity) {
+		this.purchaseRequest = purchaseRequest;
+		this.product = product;
+		this.quantity = quantity;
+	}
 	
 	public PurchaseRequestLineItem() {
 		super();
 	}
 
-	public PurchaseRequestLineItem(int id, int purchaseRequestId, int productId, int quantity) {
-		super();
-		this.id = id;
-		this.purchaseRequestId = purchaseRequestId;
-		this.productId = productId;
-		this.quantity = quantity;
-	}
 
 	public int getId() {
 		return id;
@@ -26,20 +48,20 @@ public class PurchaseRequestLineItem {
 		this.id = id;
 	}
 
-	public int getPurchaseRequestId() {
-		return purchaseRequestId;
+	public PurchaseRequest getPurchaseRequest() {
+		return purchaseRequest;
 	}
 
-	public void setPurchaseRequestId(int purchaseRequestId) {
-		this.purchaseRequestId = purchaseRequestId;
+	public void setPurchaseRequest(PurchaseRequest purchaseRequest) {
+		this.purchaseRequest = purchaseRequest;
 	}
 
-	public int getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getQuantity() {
@@ -52,8 +74,8 @@ public class PurchaseRequestLineItem {
 
 	@Override
 	public String toString() {
-		return "PurchaseRequestLineItem [id=" + id + ", purchaseRequestId=" + purchaseRequestId + ", productId="
-				+ productId + ", quantity=" + quantity + "]";
+		return "\nPurchaseRequestLineItem: id=" + id + ", purchaseRequest=" + purchaseRequest + ", product="
+				+ product.getName() + ", quantity=" + quantity;
 	}
 	
 	

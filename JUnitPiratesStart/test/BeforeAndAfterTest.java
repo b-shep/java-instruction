@@ -1,8 +1,8 @@
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.*;
 
-public class BeforeAndAfterTEst {
+public class BeforeAndAfterTest {
 
 	@Test
 	public void test1() {
@@ -18,22 +18,22 @@ public class BeforeAndAfterTEst {
 		System.out.println("test3 called");
 	}
 	
-	@Test
+	@Before
 	public void before() {
 		System.out.println("before called");
 	}
-	@Test
+	@After
 	public void after() {
 		System.out.println("after called");
 	}
-	@Test
+	@Before
 	public void beforeClass() {
 		System.out.println("beforeClass called");
 	}
 	
-	@Test
+	@After
 	public void afterClass() {
-		System.out.println("afterClass called");
+		System.out.println("afterClass we are going to happy hour");
 	}
 		
 }

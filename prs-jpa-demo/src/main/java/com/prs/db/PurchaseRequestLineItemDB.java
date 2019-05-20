@@ -10,19 +10,22 @@ import javax.persistence.TypedQuery;
 
 import com.prs.logic.PurchaseRequest;
 import com.prs.logic.PurchaseRequestLineItem;
+import com.prs.logic.User;
 
-public class PurchaseRequestLineItemDB {
+public class PurchaseRequestLineItemDB extends Database<PurchaseRequestLineItem>{
+
+	List<PurchaseRequestLineItem> purchaseRequestLineItems = null;
+	
 	public List<PurchaseRequestLineItem> getAll(){
-		List<PurchaseRequestLineItem> purchaseRequests = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		
 		try {
 			Query q = em.createQuery("Select prli from PurchaseRequestLineItem prli");
-			purchaseRequests = q.getResultList();
+			purchaseRequestLineItems = q.getResultList();
 		} finally {
 			em.close();
 		}
-		return purchaseRequests;
+		return purchaseRequestLineItems;
 	}
 	
 	public static PurchaseRequestLineItem get(int id) {
@@ -97,7 +100,16 @@ public class PurchaseRequestLineItemDB {
 		} finally {
 			em.close();
 		}
-	} 
+	}
+	
+	@Override
+	public String toString() {
+		String prliString = "";
+		for (PurchaseRequestLineItem prli: purchaseRequestLineItems) {
+			prliString += prli.toString();
+		}
+		return prliString;
+	}
 	
 
 }

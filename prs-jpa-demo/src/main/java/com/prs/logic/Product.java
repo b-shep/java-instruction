@@ -94,8 +94,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "\n[" + name + ", id=" + id + ", vendor=" + vendor.getName() + ", partNumber=" + partNumber + ", name=" + name + ", price="
-				+ price + ", unit=" + unit + ", photoPath=" + photoPath + "]";
+		return "\nProduct: " + name + ", id=" + id + ", vendor=" + vendor.getName() + ", partNumber=" + partNumber + ", name=" + name + ", price="
+				+ price + ", unit=" + unit + ", photoPath=" + photoPath;
 	}
 	
 	

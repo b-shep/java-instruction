@@ -9,11 +9,14 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.prs.logic.PurchaseRequest;
+import com.prs.logic.User;
 import com.prs.logic.Vendor;
 
-public class PurchaseRequestDB {
+public class PurchaseRequestDB extends Database<PurchaseRequest>{
+
+	List<PurchaseRequest> purchaseRequests = null;
+	
 	public List<PurchaseRequest> getAll(){
-		List<PurchaseRequest> purchaseRequests = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		
 		try {
@@ -98,5 +101,14 @@ public class PurchaseRequestDB {
 			em.close();
 		}
 	} 
+	
+	@Override
+	public String toString() {
+		String purchaseRequestString = "";
+		for (PurchaseRequest p: purchaseRequests) {
+			purchaseRequestString += p.toString();
+		}
+		return purchaseRequestString;
+	}
 
 }

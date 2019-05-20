@@ -9,11 +9,14 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.prs.logic.Product;
+import com.prs.logic.User;
 import com.prs.logic.Vendor;
 
-public class ProductDB {
-	public static List<Product> getAll(){
-		List<Product> products = null;
+public class ProductDB extends Database<Product>{
+
+	List<Product> products = null;
+	
+	public List<Product> getAll(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		
 		try {
@@ -97,6 +100,15 @@ public class ProductDB {
 		} finally {
 			em.close();
 		}
+	}
+	
+	@Override
+	public String toString() {
+		String productString = "";
+		for (Product p: products) {
+			productString += p.toString();
+		}
+		return productString;
 	}
 
 }

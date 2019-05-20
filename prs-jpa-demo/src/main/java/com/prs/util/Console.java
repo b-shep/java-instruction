@@ -1,6 +1,7 @@
 package com.prs.util;
 
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -116,6 +117,14 @@ public class Console{
         	}
         }
         return s;
+	}
+	
+	public static LocalDate getDate(String prompt) {
+		System.out.println(prompt);
+		String dateStr = sc.next();
+		LocalDate date = LocalDate.parse(dateStr);
+		return date;
+		
 	}
 	
 }
